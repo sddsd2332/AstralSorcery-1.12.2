@@ -106,7 +106,7 @@ public class ItemJournal extends Item {
         NBTTagCompound cmp = NBTHelper.getPersistentData(parentJournal);
         NBTTagList list = new NBTTagList();
         for (IConstellation c : saveConstellations) {
-            list.appendTag(new NBTTagString(c.getUnlocalizedName()));
+            list.appendTag(new NBTTagString(c.getTranslationKey()));
         }
         cmp.setTag("constellations", list);
     }

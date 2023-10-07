@@ -447,7 +447,7 @@ public class GuiHandTelescope extends GuiWHScreen implements GuiSkyScreen {
                                 return (0.3F + 0.7F * RenderConstellation.conCFlicker(ClientScheduler.getClientTick(), partialTicks, 5 + r.nextInt(15))) * transparency * rainBr;
                             }
                         },
-                        ResearchManager.clientProgress.hasConstellationDiscovered(topFound.getUnlocalizedName()),
+                        ResearchManager.clientProgress.hasConstellationDiscovered(topFound.getTranslationKey()),
                         true
                 );
 
@@ -564,7 +564,7 @@ public class GuiHandTelescope extends GuiWHScreen implements GuiSkyScreen {
 
     private void checkConstellation(List<GuiTelescope.Line> drawnLines) {
         IConstellation c = drawnConstellation;
-        if (c == null || ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) return;
+        if (c == null || ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) return;
         PlayerProgress client = ResearchManager.clientProgress;
         if (client == null) return;
 
@@ -600,7 +600,7 @@ public class GuiHandTelescope extends GuiWHScreen implements GuiSkyScreen {
         }
 
         //We found a match. horray.
-        PacketChannel.CHANNEL.sendToServer(new PktDiscoverConstellation(c.getUnlocalizedName()));
+        PacketChannel.CHANNEL.sendToServer(new PktDiscoverConstellation(c.getTranslationKey()));
         clearLines();
         abortDrawing();
     }

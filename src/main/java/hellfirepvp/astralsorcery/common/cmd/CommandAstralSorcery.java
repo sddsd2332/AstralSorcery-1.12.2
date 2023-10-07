@@ -117,7 +117,7 @@ public class CommandAstralSorcery extends CommandBase {
                     case "constellations": {
                         List<String> names = new ArrayList<>();
                         for (IConstellation c : ConstellationRegistry.getAllConstellations()) {
-                            names.add(c.getUnlocalizedName());
+                            names.add(c.getTranslationKey());
                         }
                         names.add("all");
                         return getListOfStringsMatchingLastWord(args, names);
@@ -138,7 +138,7 @@ public class CommandAstralSorcery extends CommandBase {
                     case "attune": {
                         List<String> names = new ArrayList<>();
                         for (IConstellation c : ConstellationRegistry.getMajorConstellations()) {
-                            names.add(c.getUnlocalizedName());
+                            names.add(c.getTranslationKey());
                         }
                         return getListOfStringsMatchingLastWord(args, names);
                     }
@@ -246,7 +246,7 @@ public class CommandAstralSorcery extends CommandBase {
         }
 
         if(ResearchManager.setAttunedConstellation(other, cst)) {
-            sender.sendMessage(new TextComponentString("§aSuccess! Player has been attuned to " + cst.getUnlocalizedName()));
+            sender.sendMessage(new TextComponentString("§aSuccess! Player has been attuned to " + cst.getTranslationKey()));
         } else {
             sender.sendMessage(new TextComponentString("§cFailed! Player specified doesn't seem to have the research progress necessary!"));
         }
@@ -399,11 +399,11 @@ public class CommandAstralSorcery extends CommandBase {
         sender.sendMessage(new TextComponentString("§aPlayer " + otherPlayerName + "'s research Data:"));
 
         sender.sendMessage(new TextComponentString("§aProgression tier: " + progress.getTierReached().name()));
-        sender.sendMessage(new TextComponentString("§aAttuned to: " + (progress.getAttunedConstellation() == null ? "<none>" : progress.getAttunedConstellation().getUnlocalizedName())));
+        sender.sendMessage(new TextComponentString("§aAttuned to: " + (progress.getAttunedConstellation() == null ? "<none>" : progress.getAttunedConstellation().getTranslationKey())));
         sender.sendMessage(new TextComponentString("§aPerk-Exp: " + progress.getPerkExp() + " - As level: " + progress.getPerkLevel(other)));
         sender.sendMessage(new TextComponentString("§aUnlocked perks + unlock-level:"));
         for (AbstractPerk perk : progress.getAppliedPerks()) {
-            sender.sendMessage(new TextComponentString("§7" + (perk.getUnlocalizedName() + ".name")));
+            sender.sendMessage(new TextComponentString("§7" + (perk.getTranslationKey() + ".name")));
         }
         sender.sendMessage(new TextComponentString("§aUnlocked research groups:"));
         StringBuilder sb = new StringBuilder();
@@ -449,7 +449,7 @@ public class CommandAstralSorcery extends CommandBase {
                 sender.sendMessage(new TextComponentString("§cFailed! Could not load Progress for (" + otherPlayerName + ") !"));
                 return;
             }
-            other.sendMessage(new TextComponentString("§aDiscovered constellation " + c.getUnlocalizedName() + "!"));
+            other.sendMessage(new TextComponentString("§aDiscovered constellation " + c.getTranslationKey() + "!"));
             sender.sendMessage(new TextComponentString("§aSuccess!"));
         }
     }
@@ -504,16 +504,16 @@ public class CommandAstralSorcery extends CommandBase {
     private void listConstellations(ICommandSender sender) {
         sender.sendMessage(new TextComponentString("§cMajor \"Bright\" Constellations:"));
         for (IMajorConstellation c : ConstellationRegistry.getMajorConstellations()) {
-            sender.sendMessage(new TextComponentString("§7" + c.getUnlocalizedName()));
+            sender.sendMessage(new TextComponentString("§7" + c.getTranslationKey()));
         }
         sender.sendMessage(new TextComponentString("§Weak \"Dim\" Constellations:"));
         for (IWeakConstellation c : ConstellationRegistry.getWeakConstellations()) {
             if(c instanceof IMajorConstellation) continue;
-            sender.sendMessage(new TextComponentString("§7" + c.getUnlocalizedName()));
+            sender.sendMessage(new TextComponentString("§7" + c.getTranslationKey()));
         }
         sender.sendMessage(new TextComponentString("§cMinor \"Faint\" Constellations:"));
         for (IMinorConstellation c : ConstellationRegistry.getMinorConstellations()) {
-            sender.sendMessage(new TextComponentString("§7" + c.getUnlocalizedName()));
+            sender.sendMessage(new TextComponentString("§7" + c.getTranslationKey()));
         }
     }
 

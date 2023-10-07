@@ -59,7 +59,7 @@ public class GemSlotMajorPerk extends MajorPerk implements GemSlotPerk {
     }
 
     @Override
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         if (this.ovrUnlocalizedNamePrefix != null) {
             return this.ovrUnlocalizedNamePrefix;
         }

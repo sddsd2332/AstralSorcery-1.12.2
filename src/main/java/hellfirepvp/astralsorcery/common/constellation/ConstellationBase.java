@@ -135,7 +135,7 @@ public abstract class ConstellationBase implements IConstellation {
     }
 
     @Override
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         return name;
     }
 
@@ -146,7 +146,7 @@ public abstract class ConstellationBase implements IConstellation {
 
     @Override
     public String toString() {
-        return "Constellation={name:" + getUnlocalizedName() + "}";
+        return "Constellation={name:" + getTranslationKey() + "}";
     }
 
     @Override

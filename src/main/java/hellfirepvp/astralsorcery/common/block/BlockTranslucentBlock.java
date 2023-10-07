@@ -116,7 +116,7 @@ public class BlockTranslucentBlock extends BlockContainer {
     }
 
     @Override
-    public BlockRenderLayer getBlockLayer() {
+    public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.TRANSLUCENT;
     }
 

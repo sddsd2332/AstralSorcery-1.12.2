@@ -218,7 +218,7 @@ public class PktSyncKnowledge implements IMessage, IMessageHandler<PktSyncKnowle
 
         if(attunedConstellation != null) {
             buf.writeByte(1);
-            ByteBufUtils.writeString(buf, attunedConstellation.getUnlocalizedName());
+            ByteBufUtils.writeString(buf, attunedConstellation.getTranslationKey());
         } else {
             buf.writeByte(-1);
         }

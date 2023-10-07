@@ -121,7 +121,7 @@ public abstract class GuiScreenJournal extends GuiWHScreen {
                         offsetX, offsetY,
                         bookmarkWidth, bookmarkHeight,
                         bookmarkWidth + (bookmarkIndex == bookmarkProvider.getIndex() ? 0 : 5),
-                        zLevel, bookmarkProvider.getUnlocalizedName(), 0xDDDDDDDD, mousePoint,
+                        zLevel, bookmarkProvider.getTranslationKey(), 0xDDDDDDDD, mousePoint,
                         bookmarkProvider.getTextureBookmark(), bookmarkProvider.getTextureBookmarkStretched());
                 drawnBookmarks.put(r, bookmarkProvider);
                 offsetY += bookmarkGap;

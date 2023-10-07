@@ -209,7 +209,7 @@ public class PlayerProgress {
         }
         cmp.setIntArray("research", researchArray);
         if(attunedConstellation != null) {
-            cmp.setString("attuned", attunedConstellation.getUnlocalizedName());
+            cmp.setString("attuned", attunedConstellation.getTranslationKey());
         }
         list = new NBTTagList();
         for (Map.Entry<AbstractPerk, NBTTagCompound> entry : appliedPerkData.entrySet()) {
@@ -528,7 +528,7 @@ public class PlayerProgress {
     }
 
     public boolean hasConstellationDiscovered(IConstellation constellation) {
-        return hasConstellationDiscovered(constellation.getUnlocalizedName());
+        return hasConstellationDiscovered(constellation.getTranslationKey());
     }
 
     public boolean hasConstellationDiscovered(String constellation) {

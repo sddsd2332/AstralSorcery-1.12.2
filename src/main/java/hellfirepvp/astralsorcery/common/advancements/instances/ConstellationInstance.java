@@ -47,7 +47,7 @@ public class ConstellationInstance extends AbstractCriterionInstance {
         if (constellationMinor && !(discovered instanceof IMinorConstellation)) {
             return false;
         }
-        return constellationNames.isEmpty() || constellationNames.contains(discovered.getUnlocalizedName());
+        return constellationNames.isEmpty() || constellationNames.contains(discovered.getTranslationKey());
     }
 
     public static ConstellationInstance deserialize(ResourceLocation id, JsonObject json) {
@@ -61,7 +61,7 @@ public class ConstellationInstance extends AbstractCriterionInstance {
             }
             IConstellation cst = ConstellationRegistry.getConstellationByName(je.getAsString());
             if (cst != null) {
-                ci.constellationNames.add(cst.getUnlocalizedName());
+                ci.constellationNames.add(cst.getTranslationKey());
             }
         }
         return ci;

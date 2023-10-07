@@ -247,7 +247,7 @@ public class ActiveStarMap {
         NBTTagList l = new NBTTagList();
         for (Map.Entry<IConstellation, Float> entry : starProportions.entrySet()) {
             NBTTagCompound c = new NBTTagCompound();
-            c.setString("cst", entry.getKey().getUnlocalizedName());
+            c.setString("cst", entry.getKey().getTranslationKey());
             c.setFloat("perc", entry.getValue());
             l.appendTag(c);
         }
@@ -256,7 +256,7 @@ public class ActiveStarMap {
         l = new NBTTagList();
         for (Map.Entry<IConstellation, List<Point>> offsetEntry : mapOffsets.entrySet()) {
             NBTTagCompound c = new NBTTagCompound();
-            c.setString("cst", offsetEntry.getKey().getUnlocalizedName());
+            c.setString("cst", offsetEntry.getKey().getTranslationKey());
             NBTTagList posList = new NBTTagList();
             for (Point p : offsetEntry.getValue()) {
                 NBTTagCompound tag = new NBTTagCompound();

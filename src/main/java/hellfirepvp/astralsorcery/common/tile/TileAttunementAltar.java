@@ -293,7 +293,7 @@ public class TileAttunementAltar extends TileEntityTick implements IMultiblockDe
                     if (prog.isValid() &&
                             prog.getAttunedConstellation() == null &&
                             prog.getResearchProgression().contains(ResearchProgression.ATTUNEMENT) &&
-                            prog.getKnownConstellations().contains(activeFound.getUnlocalizedName())) {
+                            prog.getKnownConstellations().contains(activeFound.getTranslationKey())) {
 
                         PktAttunementAltarState state = new PktAttunementAltarState(pl.getEntityId(), world.provider.getDimension(), getPos());
                         PacketChannel.CHANNEL.sendTo(state, pl);
@@ -447,7 +447,7 @@ public class TileAttunementAltar extends TileEntityTick implements IMultiblockDe
             if(prog.isValid() &&
                     prog.getAttunedConstellation() == null &&
                     prog.getResearchProgression().contains(ResearchProgression.ATTUNEMENT) &&
-                    prog.getKnownConstellations().contains(cst.getUnlocalizedName())) {
+                    prog.getKnownConstellations().contains(cst.getTranslationKey())) {
                 ResearchManager.setAttunedConstellation(playerEntity, cst);
 
                 for (int i = 0; i < 6; i++) {
@@ -552,7 +552,7 @@ public class TileAttunementAltar extends TileEntityTick implements IMultiblockDe
                         held = cst;
                     }
                 }
-                if(held != null && ResearchManager.clientProgress.hasConstellationDiscovered(held.getUnlocalizedName())) {
+                if(held != null && ResearchManager.clientProgress.hasConstellationDiscovered(held.getTranslationKey())) {
                     highlightConstellation(held);
                 }
             }

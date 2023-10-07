@@ -53,7 +53,7 @@ public class PerkAttributeType {
         return isOnlyMultiplicative;
     }
 
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         return String.format("perk.attribute.%s.name", getTypeString());
     }
 

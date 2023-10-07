@@ -70,7 +70,7 @@ public class PktEngraveGlass implements IMessage, IMessageHandler<PktEngraveGlas
         ByteBufUtils.writePos(buf, this.pos);
         buf.writeInt(this.constellations.size());
         for (DrawnConstellation c : this.constellations) {
-            ByteBufUtils.writeString(buf, c.constellation.getUnlocalizedName());
+            ByteBufUtils.writeString(buf, c.constellation.getTranslationKey());
             buf.writeInt(c.point.x);
             buf.writeInt(c.point.y);
         }

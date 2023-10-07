@@ -873,7 +873,7 @@ public class TileRitualPedestal extends TileReceiverBase implements IMultiblockD
         private void findPossibleMirror(World world) {
             long seed = 3451968351053166105L;
             seed |= this.getLocationPos().toLong() * 31;
-            seed |= this.channeling.getUnlocalizedName().hashCode() * 31;
+            seed |= this.channeling.getTranslationKey().hashCode() * 31;
             Random r = new Random(seed);
             for (int i = 0; i < this.getCollectedBackmirrors(); i++) {
                 r.nextInt(possibleOffsets.length);

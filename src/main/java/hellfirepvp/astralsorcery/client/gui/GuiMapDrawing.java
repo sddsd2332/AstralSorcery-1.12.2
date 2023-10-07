@@ -156,7 +156,7 @@ public class GuiMapDrawing extends GuiTileBase<TileMapDrawingTable> {
 
                     if(cst != null) {
                         List<IConstellation> filtered = cst.stream()
-                                .filter((c) -> ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName()))
+                                .filter((c) -> ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey()))
                                 .collect(Collectors.toList());
 
                         for (int i = 0; i < Math.min(filtered.size(), 12); i++) {
@@ -279,7 +279,7 @@ public class GuiMapDrawing extends GuiTileBase<TileMapDrawingTable> {
 
         for (Rectangle r : mapRenderedConstellations.keySet()) {
             if(r.contains(mouseX - guiLeft, mouseY - guiTop)) {
-                tooltip = Lists.newArrayList(I18n.format(mapRenderedConstellations.get(r).getUnlocalizedName()));
+                tooltip = Lists.newArrayList(I18n.format(mapRenderedConstellations.get(r).getTranslationKey()));
             }
         }
 

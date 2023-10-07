@@ -114,7 +114,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
 
     private void buildCapeText() {
         if(EnumGatedKnowledge.CONSTELLATION_CAPE.canSee(ResearchManager.clientProgress.getTierReached())) {
-            String unlocEnch = constellation.getUnlocalizedName() + ".capeeffect";
+            String unlocEnch = constellation.getTranslationKey() + ".capeeffect";
             String textEnch = I18n.format(unlocEnch);
             if(!unlocEnch.equals(textEnch)) {
                 String head = I18n.format("gui.journal.cst.capeeffect");
@@ -134,7 +134,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
 
     private void buildEnchText() {
         if(EnumGatedKnowledge.CONSTELLATION_ENCH_POTION.canSee(ResearchManager.clientProgress.getTierReached())) {
-            String unlocEnch = constellation.getUnlocalizedName() + ".enchantments";
+            String unlocEnch = constellation.getTranslationKey() + ".enchantments";
             String textEnch = I18n.format(unlocEnch);
             if(!unlocEnch.equals(textEnch)) {
                 String head = I18n.format("gui.journal.cst.enchantments");
@@ -155,7 +155,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
     private void buildRitualText() {
         if(EnumGatedKnowledge.CONSTELLATION_RITUAL.canSee(ResearchManager.clientProgress.getTierReached())) {
             if (constellation instanceof IMinorConstellation) {
-                String unlocRitual = constellation.getUnlocalizedName() + ".trait";
+                String unlocRitual = constellation.getTranslationKey() + ".trait";
                 String textRitual = I18n.format(unlocRitual);
                 if(!unlocRitual.equals(textRitual)) {
                     String head = I18n.format("gui.journal.cst.ritual.trait");
@@ -170,7 +170,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
                     locTextRitualEnch.addAll(lines);
                 }
             } else {
-                String unlocRitual = constellation.getUnlocalizedName() + ".ritual";
+                String unlocRitual = constellation.getTranslationKey() + ".ritual";
                 String textRitual = I18n.format(unlocRitual);
                 if(!unlocRitual.equals(textRitual)) {
                     String head = I18n.format("gui.journal.cst.ritual");
@@ -189,7 +189,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
     }
 
     private void buildMainText() {
-        String unloc = constellation.getUnlocalizedName() + ".effect";
+        String unloc = constellation.getTranslationKey() + ".effect";
         String text = I18n.format(unloc);
         if(unloc.equals(text)) return;
 
@@ -437,13 +437,13 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
         texArrow.bind();
         fontRenderer.font_size_multiplicator = 0.05F;
         SizeConstraint sc = constellation.getSizeConstraint();
-        String trSize = I18n.translateToLocal(sc.getUnlocalizedName());
+        String trSize = I18n.translateToLocal(sc.getTranslationKey());
         fontRenderer.drawString("- " + trSize, guiLeft + 228, guiTop + 85, zLevel, null, 0.7F, 0);
 
         List<RitualConstraint> constrList = constellation.getConstraints();
         for (int i = 0; i < constrList.size(); i++) {
             RitualConstraint cstr = constrList.get(i);
-            String str = I18n.translateToLocal(cstr.getUnlocalizedName());
+            String str = I18n.translateToLocal(cstr.getTranslationKey());
             texArrow.bind();
             fontRenderer.font_size_multiplicator = 0.05F;
             fontRenderer.drawString("- " + str, guiLeft + 228, guiTop + 107 + (i * 22), zLevel, null, 0.7F, 0);
@@ -475,7 +475,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
             GlStateManager.color(1, 1, 1, 1);
             TextureHelper.refreshTextureBindState();
             GlStateManager.enableDepth();
-        } else if(ResearchManager.clientProgress.hasConstellationDiscovered(constellation.getUnlocalizedName())) {
+        } else if(ResearchManager.clientProgress.hasConstellationDiscovered(constellation.getTranslationKey())) {
             GlStateManager.enableBlend();
             Blending.DEFAULT.applyStateManager();
             GlStateManager.color(0.7F, 0.7F, 0.7F, 0.6F);
@@ -519,7 +519,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
     private void drawConstellation(float partial) {
         float br = 0.866F;
         GlStateManager.color(br, br, br, 0.8F);
-        String name = I18n.format(constellation.getUnlocalizedName()).toUpperCase();
+        String name = I18n.format(constellation.getTranslationKey()).toUpperCase();
         TextureHelper.refreshTextureBindState();
         FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
         double width = fr.getStringWidth(name);
@@ -562,7 +562,7 @@ public class GuiJournalConstellationDetails extends GuiScreenJournal {
         GlStateManager.enableBlend();
         Blending.DEFAULT.apply();
 
-        boolean known = ResearchManager.clientProgress.hasConstellationDiscovered(constellation.getUnlocalizedName());
+        boolean known = ResearchManager.clientProgress.hasConstellationDiscovered(constellation.getTranslationKey());
         RenderConstellation.renderConstellationIntoGUI(known ? constellation.getConstellationColor() : constellation.getTierRenderColor(), constellation,
                 guiLeft + 40, guiTop + 60, zLevel,
                 150, 150, 2F,

@@ -57,7 +57,7 @@ public enum ResearchProgression {
             if(node.renderPosX == res.renderPosX &&
                     node.renderPosZ == res.renderPosZ) {
                 throw new IllegalArgumentException("Tried to register 2 Research Nodes at the same position at x=" + res.renderPosX + ", z=" + res.renderPosZ + "! " +
-                        "Present: " + node.getUnLocalizedName() + " - Tried to set: " + res.getUnLocalizedName());
+                        "Present: " + node.getTranslationKey() + " - Tried to set: " + res.getTranslationKey());
             }
         }
         this.researchNodes.add(res);
@@ -91,7 +91,7 @@ public enum ResearchProgression {
         return Collections.unmodifiableList(preConditions);
     }
 
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         return unlocName;
     }
 

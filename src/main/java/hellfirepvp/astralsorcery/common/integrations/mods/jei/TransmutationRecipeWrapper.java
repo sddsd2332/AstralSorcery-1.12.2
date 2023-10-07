@@ -49,7 +49,7 @@ public class TransmutationRecipeWrapper extends JEIBaseWrapper {
     public void drawInfo(Minecraft minecraft, int recipeWidth, int recipeHeight, int mouseX, int mouseY) {
         if (minecraft.fontRenderer != null) {
             if (this.transmutation.getRequiredType() != null) {
-                String name = this.transmutation.getRequiredType().getUnlocalizedName();
+                String name = this.transmutation.getRequiredType().getTranslationKey();
                 String out = I18n.format("misc.transmutation.constellation", I18n.format(name));
                 int length = minecraft.fontRenderer.getStringWidth(out);
                 minecraft.fontRenderer.drawString(out, recipeWidth / 2 - length / 2, recipeHeight - 12, 0xFF454545, false);

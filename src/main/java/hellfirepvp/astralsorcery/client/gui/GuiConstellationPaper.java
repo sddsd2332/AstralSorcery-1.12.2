@@ -82,7 +82,7 @@ public class GuiConstellationPaper extends GuiWHScreen {
     }
 
     private void drawHeader() {
-        String locName = I18n.format(constellation.getUnlocalizedName()).toUpperCase();
+        String locName = I18n.format(constellation.getTranslationKey()).toUpperCase();
         TextureHelper.refreshTextureBindState();
         FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
         double length = fr.getStringWidth(locName) * 1.8;

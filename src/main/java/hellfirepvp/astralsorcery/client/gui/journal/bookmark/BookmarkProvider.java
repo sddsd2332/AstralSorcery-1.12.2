@@ -54,7 +54,7 @@ public class BookmarkProvider {
         return index;
     }
 
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         return unlocName;
     }
 

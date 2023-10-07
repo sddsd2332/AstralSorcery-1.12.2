@@ -63,7 +63,7 @@ public class LightTransmutationAdd implements SerializeableRecipe {
         buf.writeDouble(this.cost);
         buf.writeBoolean(this.cst != null);
         if (this.cst != null) {
-            ByteBufUtils.writeString(buf, this.cst.getUnlocalizedName());
+            ByteBufUtils.writeString(buf, this.cst.getTranslationKey());
         }
     }
 

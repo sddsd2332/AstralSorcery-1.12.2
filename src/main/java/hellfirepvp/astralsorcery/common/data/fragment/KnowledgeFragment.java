@@ -60,7 +60,7 @@ public abstract class KnowledgeFragment {
     public static KnowledgeFragment onConstellations(ResourceLocation name, IConstellation... constellations) {
         List<IConstellation> cst = Arrays.asList(constellations);
         IConstellation c = Iterables.getFirst(cst, null);
-        return new KnowledgeFragment(name, c == null ? "" : c.getUnlocalizedName()) {
+        return new KnowledgeFragment(name, c == null ? "" : c.getTranslationKey()) {
             @Override
             @SideOnly(Side.CLIENT)
             public boolean isVisible(GuiScreenJournal journalGui) {
@@ -86,7 +86,7 @@ public abstract class KnowledgeFragment {
     private static KnowledgeFragment onResearchNodes(ResourceLocation name, ResearchNode... nodes) {
         List<ResearchNode> nds = Arrays.asList(nodes);
         ResearchNode nd = Iterables.getFirst(nds, null);
-        return new KnowledgeFragment(name, nd == null ? "" : nd.getUnLocalizedName()) {
+        return new KnowledgeFragment(name, nd == null ? "" : nd.getTranslationKey()) {
             @Override
             @SideOnly(Side.CLIENT)
             public boolean isVisible(GuiScreenJournal journalGui) {
@@ -194,7 +194,7 @@ public abstract class KnowledgeFragment {
     @SideOnly(Side.CLIENT)
     public abstract boolean isVisible(GuiScreenJournal journalGui);
 
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         return String.format("%s.name", getLocalizationBaseString());
     }
 
@@ -207,12 +207,12 @@ public abstract class KnowledgeFragment {
     }
 
     private String getLocalizationBaseString() {
-        return String.format("knowledge.%s.%s", name.getResourceDomain(), name.getResourcePath());
+        return String.format("knowledge.%s.%s", name.getNamespace(), name.getPath());
     }
 
     @SideOnly(Side.CLIENT)
     public boolean isFullyPresent() {
-        return I18n.hasKey(getUnlocalizedName()) &&
+        return I18n.hasKey(getTranslationKey()) &&
                 I18n.hasKey(getUnlocalizedBookmark()) &&
                 I18n.hasKey(getUnlocalizedPage()) &&
                 (this.unlocPrefix.isEmpty() || I18n.hasKey(this.unlocPrefix));
@@ -220,7 +220,7 @@ public abstract class KnowledgeFragment {
 
     @SideOnly(Side.CLIENT)
     public String getLocalizedName() {
-        return I18n.format(getUnlocalizedName());
+        return I18n.format(getTranslationKey());
     }
 
     @SideOnly(Side.CLIENT)

@@ -54,8 +54,8 @@ public abstract class ItemTunedCrystalBase extends ItemRockCrystalBase implement
 
             IWeakConstellation c = getMainConstellation(stack);
             if(c != null) {
-                if(EnumGatedKnowledge.CRYSTAL_TUNE.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) {
-                    tooltip.add(TextFormatting.GRAY + I18n.format("crystal.attuned", TextFormatting.BLUE + I18n.format(c.getUnlocalizedName())));
+                if(EnumGatedKnowledge.CRYSTAL_TUNE.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) {
+                    tooltip.add(TextFormatting.GRAY + I18n.format("crystal.attuned", TextFormatting.BLUE + I18n.format(c.getTranslationKey())));
                 } else if(!out.get()) {
                     tooltip.add(TextFormatting.GRAY + I18n.format("progress.missing.knowledge"));
                     out = Optional.of(true);
@@ -64,8 +64,8 @@ public abstract class ItemTunedCrystalBase extends ItemRockCrystalBase implement
 
             IMinorConstellation tr = getTrait(stack);
             if(tr != null) {
-                if(EnumGatedKnowledge.CRYSTAL_TUNE.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(tr.getUnlocalizedName())) {
-                    tooltip.add(TextFormatting.GRAY + I18n.format("crystal.trait", TextFormatting.BLUE + I18n.format(tr.getUnlocalizedName())));
+                if(EnumGatedKnowledge.CRYSTAL_TUNE.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(tr.getTranslationKey())) {
+                    tooltip.add(TextFormatting.GRAY + I18n.format("crystal.trait", TextFormatting.BLUE + I18n.format(tr.getTranslationKey())));
                 } else if(!out.get()) {
                     tooltip.add(TextFormatting.GRAY + I18n.format("progress.missing.knowledge"));
                 }
@@ -83,7 +83,7 @@ public abstract class ItemTunedCrystalBase extends ItemRockCrystalBase implement
         if (!(stack.getItem() instanceof ItemTunedCrystalBase)) return;
 
         NBTTagCompound cmp = NBTHelper.getPersistentData(stack);
-        cmp.setString("trait", trait.getUnlocalizedName());
+        cmp.setString("trait", trait.getTranslationKey());
     }
 
     @Nullable

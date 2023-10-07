@@ -149,7 +149,7 @@ public class ResearchNode {
         return pages;
     }
 
-    public String getUnLocalizedName() {
+    public String getTranslationKey() {
         return String.format("research.%s.name", unlocName);
     }
 

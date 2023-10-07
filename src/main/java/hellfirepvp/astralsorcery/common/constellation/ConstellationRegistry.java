@@ -55,13 +55,13 @@ public class ConstellationRegistry {
         if(name == null) return null;
 
         for(IConstellation c : majorConstellations) {
-            if(c.getUnlocalizedName().equals(name)) return c;
+            if(c.getTranslationKey().equals(name)) return c;
         }
         for(IConstellation c : weakConstellations) {
-            if(c.getUnlocalizedName().equals(name)) return c;
+            if(c.getTranslationKey().equals(name)) return c;
         }
         for(IConstellation c : minorConstellations) {
-            if(c.getUnlocalizedName().equals(name)) return c;
+            if(c.getTranslationKey().equals(name)) return c;
         }
         return null;
     }
@@ -71,7 +71,7 @@ public class ConstellationRegistry {
         if(name == null) return null;
 
         for(IMajorConstellation c : majorConstellations) {
-            if(c.getUnlocalizedName().equals(name)) return c;
+            if(c.getTranslationKey().equals(name)) return c;
         }
         return null;
     }

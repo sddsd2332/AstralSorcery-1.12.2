@@ -217,7 +217,7 @@ public class ResearchManager {
         if(!progress.isValid()) return false;
 
         for (IConstellation c : csts) {
-            progress.discoverConstellation(c.getUnlocalizedName());
+            progress.discoverConstellation(c.getTranslationKey());
             AdvancementTriggers.DISCOVER_CONSTELLATION.trigger((EntityPlayerMP) player, c);
         }
 
@@ -230,7 +230,7 @@ public class ResearchManager {
         PlayerProgress progress = getProgress(player, Side.SERVER);
         if(!progress.isValid()) return false;
 
-        progress.discoverConstellation(c.getUnlocalizedName());
+        progress.discoverConstellation(c.getTranslationKey());
 
         AdvancementTriggers.DISCOVER_CONSTELLATION.trigger((EntityPlayerMP) player, c);
 
@@ -243,7 +243,7 @@ public class ResearchManager {
         PlayerProgress progress = getProgress(player, Side.SERVER);
         if(!progress.isValid()) return false;
 
-        progress.memorizeConstellation(c.getUnlocalizedName());
+        progress.memorizeConstellation(c.getTranslationKey());
 
         pushProgressToClientUnsafe((EntityPlayerMP) player);
         savePlayerKnowledge((EntityPlayerMP) player);
@@ -279,7 +279,7 @@ public class ResearchManager {
         PlayerProgress progress = getProgress(player, Side.SERVER);
         if(!progress.isValid()) return false;
 
-        if (constellation != null && !progress.getKnownConstellations().contains(constellation.getUnlocalizedName())) {
+        if (constellation != null && !progress.getKnownConstellations().contains(constellation.getTranslationKey())) {
             return false;
         }
 
@@ -621,7 +621,7 @@ public class ResearchManager {
 
     private static void load_unsafeFromNBT(UUID pUUID, @Nullable NBTTagCompound compound) {
         PlayerProgress progress = new PlayerProgress();
-        if (compound != null && !compound.hasNoTags()) {
+        if (compound != null && !compound.isEmpty()) {
             progress.load(compound);
         }
         progress.forceGainResearch(ResearchProgression.DISCOVERY);

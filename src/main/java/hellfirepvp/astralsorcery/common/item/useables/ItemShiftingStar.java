@@ -70,7 +70,7 @@ public class ItemShiftingStar extends Item implements INBTModel {
     public ModelResourceLocation getModelLocation(ItemStack stack, ModelResourceLocation suggestedDefaultLocation) {
         IMajorConstellation cst = getAttunement(stack);
         if (cst != null) {
-            return new ModelResourceLocation(new ResourceLocation(suggestedDefaultLocation.getResourceDomain(), suggestedDefaultLocation.getResourcePath() + "_" + cst.getSimpleName()), suggestedDefaultLocation.getVariant());
+            return new ModelResourceLocation(new ResourceLocation(suggestedDefaultLocation.getNamespace(), suggestedDefaultLocation.getPath() + "_" + cst.getSimpleName()), suggestedDefaultLocation.getVariant());
         }
         return suggestedDefaultLocation;
     }
@@ -80,7 +80,7 @@ public class ItemShiftingStar extends Item implements INBTModel {
         List<ResourceLocation> all = Lists.newArrayList();
         all.add(defaultLocation);
         for (IMajorConstellation cst : ConstellationRegistry.getMajorConstellations()) {
-            all.add(new ResourceLocation(defaultLocation.getResourceDomain(), defaultLocation.getResourcePath() + "_" + cst.getSimpleName()));
+            all.add(new ResourceLocation(defaultLocation.getNamespace(), defaultLocation.getPath() + "_" + cst.getSimpleName()));
         }
         return all;
     }
@@ -104,8 +104,8 @@ public class ItemShiftingStar extends Item implements INBTModel {
         if ((cst = getAttunement(stack)) != null) {
             PlayerProgress prog = ResearchManager.clientProgress;
             if (prog != null) {
-                if (prog.hasConstellationDiscovered(cst.getUnlocalizedName())) {
-                    tooltip.add(TextFormatting.BLUE + I18n.format(cst.getUnlocalizedName()));
+                if (prog.hasConstellationDiscovered(cst.getTranslationKey())) {
+                    tooltip.add(TextFormatting.BLUE + I18n.format(cst.getTranslationKey()));
                 } else {
                     tooltip.add(TextFormatting.GRAY + I18n.format("progress.missing.knowledge"));
                 }
@@ -122,8 +122,8 @@ public class ItemShiftingStar extends Item implements INBTModel {
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack) {
-        String unloc = super.getUnlocalizedName(stack);
+    public String getTranslationKey(ItemStack stack) {
+        String unloc = super.getTranslationKey(stack);
         if (getAttunement(stack) != null) {
             unloc += ".enhanced";
         }
@@ -148,7 +148,7 @@ public class ItemShiftingStar extends Item implements INBTModel {
             IMajorConstellation cst;
             if ((cst = getAttunement(stack)) != null) {
                 PlayerProgress prog = ResearchManager.getProgress(pl, Side.SERVER);
-                if (!prog.isValid() || !prog.wasOnceAttuned() || !prog.hasConstellationDiscovered(cst.getUnlocalizedName())) {
+                if (!prog.isValid() || !prog.wasOnceAttuned() || !prog.hasConstellationDiscovered(cst.getTranslationKey())) {
                     return stack;
                 }
                 double exp = prog.getPerkExp();
@@ -233,7 +233,7 @@ public class ItemShiftingStar extends Item implements INBTModel {
             return;
         }
         NBTTagCompound cmp = NBTHelper.getPersistentData(stack);
-        cmp.setString("starAttunement", cst.getUnlocalizedName());
+        cmp.setString("starAttunement", cst.getTranslationKey());
     }
 
     @Nullable

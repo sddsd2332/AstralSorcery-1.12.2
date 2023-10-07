@@ -312,7 +312,7 @@ public class GuiTelescope extends GuiTileBase<TileTelescope> implements GuiSkySc
                                     return RenderConstellation.conCFlicker(ClientScheduler.getClientTick(), partialTicks, 5 + r.nextInt(15)) * rainBr;
                                 }
                             },
-                            ResearchManager.clientProgress.hasConstellationDiscovered(entry.getValue().getUnlocalizedName()),
+                            ResearchManager.clientProgress.hasConstellationDiscovered(entry.getValue().getTranslationKey()),
                             true
                     );
 
@@ -558,7 +558,7 @@ public class GuiTelescope extends GuiTileBase<TileTelescope> implements GuiSkySc
 
         lblInfos: for (ConstellationInformation info : renderInfos) {
             IConstellation c = info.constellation;
-            if (c == null || ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) continue;
+            if (c == null || ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) continue;
             PlayerProgress client = ResearchManager.clientProgress;
             if (client == null) return;
 
@@ -602,7 +602,7 @@ public class GuiTelescope extends GuiTileBase<TileTelescope> implements GuiSkySc
                     ItemKnowledgeFragment.clearFragment(owningPlayer, frag);
                     KnowledgeFragmentData dat = PersistentDataManager.INSTANCE.getData(PersistentDataManager.PersistentKey.KNOWLEDGE_FRAGMENTS);
                     if (dat.addFragment(frag)) {
-                        String cName = c.getUnlocalizedName();
+                        String cName = c.getTranslationKey();
                         cName = cName.isEmpty() ? "" : Character.toUpperCase(cName.charAt(0)) + cName.substring(1);
                         owningPlayer.sendMessage(new TextComponentString(
                                 TextFormatting.GREEN +
@@ -620,7 +620,7 @@ public class GuiTelescope extends GuiTileBase<TileTelescope> implements GuiSkySc
                 }
             } else {
                 //We found a match. horray.
-                PacketChannel.CHANNEL.sendToServer(new PktDiscoverConstellation(c.getUnlocalizedName()));
+                PacketChannel.CHANNEL.sendToServer(new PktDiscoverConstellation(c.getTranslationKey()));
             }
             clearLines();
             abortDrawing();

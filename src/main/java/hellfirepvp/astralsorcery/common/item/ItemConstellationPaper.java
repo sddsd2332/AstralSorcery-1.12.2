@@ -79,7 +79,7 @@ public class ItemConstellationPaper extends Item implements ItemHighlighted, Ite
         if(tintIndex != 1) return 0xFFFFFFFF;
         IConstellation c = getConstellation(stack);
         if(c != null) {
-            if(ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) {
+            if(ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) {
                 return 0xFF000000 | c.getConstellationColor().getRGB();
             }
         }
@@ -110,7 +110,7 @@ public class ItemConstellationPaper extends Item implements ItemHighlighted, Ite
     public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
         IConstellation c = getConstellation(stack);
         if (c != null && c.canDiscover(Minecraft.getMinecraft().player, ResearchManager.clientProgress)) {
-            tooltip.add(TextFormatting.BLUE + I18n.format(c.getUnlocalizedName()));
+            tooltip.add(TextFormatting.BLUE + I18n.format(c.getTranslationKey()));
         } else {
             tooltip.add(TextFormatting.GRAY + I18n.format("constellation.noInformation"));
         }
@@ -179,7 +179,7 @@ public class ItemConstellationPaper extends Item implements ItemHighlighted, Ite
                 if(ResearchManager.memorizeConstellation(cst, (EntityPlayer) entityIn)) {
                     entityIn.sendMessage(
                             new TextComponentTranslation("progress.seen.constellation.chat",
-                                    new TextComponentTranslation(cst.getUnlocalizedName())
+                                    new TextComponentTranslation(cst.getTranslationKey())
                                             .setStyle(new Style().setColor(TextFormatting.GRAY)))
                                     .setStyle(new Style().setColor(TextFormatting.BLUE)));
                     if(ResearchManager.clientProgress.getSeenConstellations().size() == 1) {
@@ -205,7 +205,7 @@ public class ItemConstellationPaper extends Item implements ItemHighlighted, Ite
     public Color getHightlightColor(ItemStack stack) {
         IConstellation c = getConstellation(stack);
         if(c != null) {
-            if(ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) {
+            if(ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) {
                 return c.getConstellationColor();
             }
             return c.getTierRenderColor();

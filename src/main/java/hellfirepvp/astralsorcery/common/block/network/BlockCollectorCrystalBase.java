@@ -138,12 +138,12 @@ public abstract class BlockCollectorCrystalBase extends BlockStarlightNetwork
             ProgressionTier tier = ResearchManager.clientProgress.getTierReached();
             IWeakConstellation c = ItemCollectorCrystal.getConstellation(stack);
             if(c != null) {
-                if(EnumGatedKnowledge.COLLECTOR_TYPE.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) {
-                    tooltip.add(TextFormatting.GRAY + I18n.format("crystal.collect.type", TextFormatting.BLUE + I18n.format(c.getUnlocalizedName())));
+                if(EnumGatedKnowledge.COLLECTOR_TYPE.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) {
+                    tooltip.add(TextFormatting.GRAY + I18n.format("crystal.collect.type", TextFormatting.BLUE + I18n.format(c.getTranslationKey())));
                     IMinorConstellation tr = ItemCollectorCrystal.getTrait(stack);
                     if(tr != null) {
-                        if(EnumGatedKnowledge.CRYSTAL_TRAIT.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(tr.getUnlocalizedName())) {
-                            tooltip.add(TextFormatting.GRAY + I18n.format("crystal.trait", TextFormatting.BLUE + I18n.format(tr.getUnlocalizedName())));
+                        if(EnumGatedKnowledge.CRYSTAL_TRAIT.canSee(tier) && ResearchManager.clientProgress.hasConstellationDiscovered(tr.getTranslationKey())) {
+                            tooltip.add(TextFormatting.GRAY + I18n.format("crystal.trait", TextFormatting.BLUE + I18n.format(tr.getTranslationKey())));
                         } else {
                             tooltip.add(TextFormatting.GRAY + I18n.format("progress.missing.knowledge"));
                         }
@@ -243,10 +243,10 @@ public abstract class BlockCollectorCrystalBase extends BlockStarlightNetwork
     }
 
     @Override
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         PlayerProgress client = ResearchManager.clientProgress;
         if(EnumGatedKnowledge.COLLECTOR_CRYSTAL.canSee(client.getTierReached())) {
-            return super.getUnlocalizedName();
+            return super.getTranslationKey();
         }
         return "tile.blockcollectorcrystal.obf";
     }

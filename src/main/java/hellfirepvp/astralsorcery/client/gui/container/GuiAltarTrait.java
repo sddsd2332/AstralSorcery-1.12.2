@@ -112,7 +112,7 @@ public class GuiAltarTrait extends GuiAltarBase {
         TextureHelper.refreshTextureBindState();
 
         IConstellation c = containerAltarBase.tileAltar.getFocusedConstellation();
-        if(c != null && containerAltarBase.tileAltar.getMultiblockState() && ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName())) {
+        if(c != null && containerAltarBase.tileAltar.getMultiblockState() && ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey())) {
             rand.setSeed(0x61FF25A5B7C24109L);
 
             GL11.glPushAttrib(GL11.GL_ALL_ATTRIB_BITS);

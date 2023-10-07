@@ -51,10 +51,10 @@ public interface IConstellation {
 
     public String getSimpleName();
 
-    public String getUnlocalizedName();
+    public String getTranslationKey();
 
     default public String getUnlocalizedInfo() {
-        return getUnlocalizedName() + ".info";
+        return getTranslationKey() + ".info";
     }
 
     public static String getDefaultSaveKey() {
@@ -84,7 +84,7 @@ public interface IConstellation {
     }
 
     default public void writeToNBT(NBTTagCompound compound, String key) {
-        compound.setString(key, getUnlocalizedName());
+        compound.setString(key, getTranslationKey());
     }
 
     @Nullable

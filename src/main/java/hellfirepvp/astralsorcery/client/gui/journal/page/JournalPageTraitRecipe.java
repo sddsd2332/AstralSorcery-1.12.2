@@ -119,7 +119,7 @@ public class JournalPageTraitRecipe implements IJournalPage {
 
             if(recipe.getRequiredConstellation() != null) {
                 out.add(I18n.format("astralsorcery.journal.recipe.constellation",
-                        I18n.format(recipe.getRequiredConstellation().getUnlocalizedName())));
+                        I18n.format(recipe.getRequiredConstellation().getTranslationKey())));
             }
         }
 

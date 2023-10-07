@@ -82,13 +82,13 @@ public class ItemCraftingComponent extends Item implements IItemVariants {
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack) {
+    public String getTranslationKey(ItemStack stack) {
         Item i = stack.getItem();
         if(i instanceof ItemCraftingComponent) {
             MetaType type = MetaType.fromMeta(stack.getItemDamage());
-            return super.getUnlocalizedName(stack) + "." + type.getUnlocalizedName();
+            return super.getTranslationKey(stack) + "." + type.getTranslationKey();
         }
-        return super.getUnlocalizedName(stack);
+        return super.getTranslationKey(stack);
     }
 
     @Override
@@ -97,7 +97,7 @@ public class ItemCraftingComponent extends Item implements IItemVariants {
         MetaType[] values = MetaType.values();
         for (int i = 0; i < values.length; i++) {
             MetaType mt = values[i];
-            sub[i] = mt.getUnlocalizedName();
+            sub[i] = mt.getTranslationKey();
         }
         return sub;
     }
@@ -126,7 +126,7 @@ public class ItemCraftingComponent extends Item implements IItemVariants {
             return new ItemStack(ItemsAS.craftingComponent, 1, getMeta());
         }
 
-        public String getUnlocalizedName() {
+        public String getTranslationKey() {
             return name().toLowerCase();
         }
 

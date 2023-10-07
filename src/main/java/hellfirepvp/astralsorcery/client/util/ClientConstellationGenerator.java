@@ -189,7 +189,7 @@ public class ClientConstellationGenerator {
         }
 
         @Override
-        public String getUnlocalizedName() {
+        public String getTranslationKey() {
             return this.localizedName;
         }
 

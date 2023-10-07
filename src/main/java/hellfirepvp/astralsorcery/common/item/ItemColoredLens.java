@@ -148,7 +148,7 @@ public class ItemColoredLens extends Item implements ItemDynamicColor {
             return flowReduction;
         }
 
-        public String getUnlocalizedName() {
+        public String getTranslationKey() {
             return name().toLowerCase();
         }
 

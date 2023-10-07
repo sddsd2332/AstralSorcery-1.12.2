@@ -102,7 +102,7 @@ public class ItemCape extends ItemArmor implements ItemDynamicColor {
         }
         IConstellation cst = getAttunedConstellation(stack);
         if(cst != null) {
-            String n = cst.getUnlocalizedName();
+            String n = cst.getTranslationKey();
             n = I18n.format(n);
             tooltip.add(TextFormatting.BLUE + n);
         }

@@ -86,7 +86,7 @@ public class GuiJournalConstellationCluster extends GuiScreenJournal {
         /*if(tiersFound.isEmpty()) {
             return new GuiJournalConstellationCluster(1, false, "gui.journal.c.unmapped", unmapped);
         } else if(tiersFound.size() == 1) {
-            return new GuiJournalConstellationCluster(1, true, tiersFound.get(0).getUnlocalizedName(), tierMapped.get(tiersFound.get(0)));
+            return new GuiJournalConstellationCluster(1, true, tiersFound.get(0).getTranslationKey(), tierMapped.get(tiersFound.get(0)));
         } else {
             return new GuiJournalConstellations(unmapped, tiersFound);
         }*/
@@ -247,7 +247,7 @@ public class GuiJournalConstellationCluster extends GuiScreenJournal {
         GlStateManager.color(r, g, b, 1F);
 
         TextureHelper.refreshTextureBindState();
-        String trName = specTitle == null ? I18n.format(display.getUnlocalizedName()).toUpperCase() : I18n.format(specTitle).toUpperCase();
+        String trName = specTitle == null ? I18n.format(display.getTranslationKey()).toUpperCase() : I18n.format(specTitle).toUpperCase();
         FontRenderer fr = Minecraft.getMinecraft().fontRenderer;
         float fullLength = (width / 2) - (((float) fr.getStringWidth(trName)) / 2F);
         fr.drawString(trName, fullLength, 90F, 0xBBDDDDDD, true);

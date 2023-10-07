@@ -405,7 +405,7 @@ public class GuiObservatory extends GuiTileBase<TileObservatory> implements GuiS
                                     return (0.4F + 0.6F * RenderConstellation.conCFlicker(ClientScheduler.getClientTick(), partialTicks, 5 + r.nextInt(15))) * transparency * rainBr;
                                 }
                             },
-                            ResearchManager.clientProgress.hasConstellationDiscovered(constellationOffset.getKey().getUnlocalizedName()),
+                            ResearchManager.clientProgress.hasConstellationDiscovered(constellationOffset.getKey().getTranslationKey()),
                             true
                     );
 
@@ -666,7 +666,7 @@ public class GuiObservatory extends GuiTileBase<TileObservatory> implements GuiS
     private void checkConstellation(List<GuiTelescope.Line> drawnLines) {
         lblInfos: for (Map.Entry<IConstellation, Map<StarLocation, Rectangle>> info : this.drawnStars.entrySet()) {
             IConstellation c = info.getKey();
-            if (c == null || ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName()))
+            if (c == null || ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey()))
                 continue;
             PlayerProgress client = ResearchManager.clientProgress;
             if (client == null) return;
@@ -711,7 +711,7 @@ public class GuiObservatory extends GuiTileBase<TileObservatory> implements GuiS
                     ItemKnowledgeFragment.clearFragment(owningPlayer, frag);
                     KnowledgeFragmentData dat = PersistentDataManager.INSTANCE.getData(PersistentDataManager.PersistentKey.KNOWLEDGE_FRAGMENTS);
                     if (dat.addFragment(frag)) {
-                        String cName = c.getUnlocalizedName();
+                        String cName = c.getTranslationKey();
                         cName = cName.isEmpty() ? "" : Character.toUpperCase(cName.charAt(0)) + cName.substring(1);
                         owningPlayer.sendMessage(new TextComponentString(
                                 TextFormatting.GREEN +
@@ -723,7 +723,7 @@ public class GuiObservatory extends GuiTileBase<TileObservatory> implements GuiS
                 }
             } else {
                 //We found a match. horray.
-                PacketChannel.CHANNEL.sendToServer(new PktDiscoverConstellation(c.getUnlocalizedName()));
+                PacketChannel.CHANNEL.sendToServer(new PktDiscoverConstellation(c.getTranslationKey()));
             }
             clearLines();
             abortDrawing();

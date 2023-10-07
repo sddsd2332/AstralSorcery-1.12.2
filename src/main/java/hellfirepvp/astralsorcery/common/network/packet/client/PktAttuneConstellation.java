@@ -53,7 +53,7 @@ public class PktAttuneConstellation implements IMessage, IMessageHandler<PktAttu
 
     @Override
     public void toBytes(ByteBuf buf) {
-        ByteBufUtils.writeString(buf, attunement.getUnlocalizedName());
+        ByteBufUtils.writeString(buf, attunement.getTranslationKey());
         buf.writeInt(worldId);
         ByteBufUtils.writePos(buf, at);
     }

@@ -27,7 +27,7 @@ public class PerkStatistic {
 
     public PerkStatistic(PerkAttributeType type, String perkValue, String suffix, String postProcessInfo) {
         this.type = type;
-        this.unlocPerkTypeName = type.getUnlocalizedName();
+        this.unlocPerkTypeName = type.getTranslationKey();
         this.perkValue = perkValue;
         this.suffix = suffix;
         this.postProcessInfo = postProcessInfo;

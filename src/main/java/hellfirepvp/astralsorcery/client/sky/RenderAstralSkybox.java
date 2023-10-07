@@ -464,7 +464,7 @@ public class RenderAstralSkybox extends IRenderHandler {
                 Map<IConstellation, ClientConstellationPositionMapping.RenderPosition> renderMap = mapping.getCurrentRenderPositions();
                 for (Map.Entry<IConstellation, ClientConstellationPositionMapping.RenderPosition> entry : renderMap.entrySet()) {
                     IConstellation c = entry.getKey();
-                    if (!ResearchManager.clientProgress.hasConstellationDiscovered(c.getUnlocalizedName()) ||
+                    if (!ResearchManager.clientProgress.hasConstellationDiscovered(c.getTranslationKey()) ||
                             !handle.isActive(c)) continue;
 
                     RenderConstellation.renderConstellation(c, entry.getValue(), new RenderConstellation.BrightnessFunction() {

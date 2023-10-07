@@ -162,7 +162,7 @@ public class PerkAttributeModifier {
     protected String getUnlocalizedAttributeName() {
         PerkAttributeType type;
         if ((type = resolveType()) != null) {
-            return type.getUnlocalizedName();
+            return type.getTranslationKey();
         }
         return "???";
     }
@@ -171,7 +171,7 @@ public class PerkAttributeModifier {
     public boolean hasDisplayString() {
         PerkAttributeType type;
         if ((type = resolveType()) != null) {
-            return I18n.hasKey(type.getUnlocalizedName());
+            return I18n.hasKey(type.getTranslationKey());
         }
         return false;
     }

@@ -288,7 +288,7 @@ public class GuiProgressionRenderer {
                     br = (float) (1F - ((scale - 6) / 2));
                 }
 
-                String name = focusedClusterMouse.getUnlocalizedName();
+                String name = focusedClusterMouse.getTranslationKey();
                 name = I18n.format(name);
                 TextureHelper.refreshTextureBindState();
                 GL11.glPushMatrix();
@@ -345,7 +345,7 @@ public class GuiProgressionRenderer {
             clusterText.tick();
 
             if(clusterText.aboutToBeRemoved() && focusedClusterMouse != null) {
-                String name = focusedClusterMouse.getUnlocalizedName();
+                String name = focusedClusterMouse.getTranslationKey();
                 name = I18n.format(name);
                 int time = (name.length() * 10) - 20;
                 clusterText.forceTicks(time);

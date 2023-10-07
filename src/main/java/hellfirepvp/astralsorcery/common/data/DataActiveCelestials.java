@@ -67,7 +67,7 @@ public class DataActiveCelestials extends AbstractData {
         Collection<IConstellation> csts = getActiveConstellations(dimId);
         if(csts != null) {
             for (IConstellation c : csts) {
-                list.appendTag(new NBTTagString(c.getUnlocalizedName()));
+                list.appendTag(new NBTTagString(c.getTranslationKey()));
             }
         }
         mainCompound.setTag(String.valueOf(dimId), list);

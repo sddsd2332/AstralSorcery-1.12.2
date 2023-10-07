@@ -166,7 +166,7 @@ public abstract class AbstractPerk {
     public void onRemovePerkServer(EntityPlayer player, PlayerProgress progress, NBTTagCompound dataStorage) {}
 
     public <T> T setNameOverride(AbstractPerk other) {
-        return setNameOverride(other.getUnlocalizedName());
+        return setNameOverride(other.getTranslationKey());
     }
 
     public <T> T setNameOverride(String namePrefix) {
@@ -205,11 +205,11 @@ public abstract class AbstractPerk {
         return false;
     }
 
-    public String getUnlocalizedName() {
+    public String getTranslationKey() {
         if (this.ovrUnlocalizedNamePrefix != null) {
             return this.ovrUnlocalizedNamePrefix;
         }
-        return "perk." + getRegistryName().getResourceDomain() + "." + getRegistryName().getResourcePath();
+        return "perk." + getRegistryName().getNamespace() + "." + getRegistryName().getPath();
     }
 
     protected void disableTooltipCaching() {
@@ -228,10 +228,10 @@ public abstract class AbstractPerk {
         if (modifiersDisabled(Minecraft.getMinecraft().player, Side.CLIENT)) {
             tooltipCache.add(TextFormatting.GRAY + I18n.format("perk.info.disabled"));
         } else if (!(this instanceof ProgressGatedPerk) || ((ProgressGatedPerk) this).canSeeClient()) {
-            tooltipCache.add(this.getCategory().getTextFormatting() + I18n.format(this.getUnlocalizedName() + ".name"));
+            tooltipCache.add(this.getCategory().getTextFormatting() + I18n.format(this.getTranslationKey() + ".name"));
 
             if (key == null) {
-                key = "perk." + getRegistryName().getResourceDomain() + "." + getRegistryName().getResourcePath();
+                key = "perk." + getRegistryName().getNamespace() + "." + getRegistryName().getPath();
             }
             int prevLength = tooltipCache.size();
             boolean shouldAdd = addLocalizedTooltip(tooltipCache);
@@ -265,7 +265,7 @@ public abstract class AbstractPerk {
     @Nullable
     @SideOnly(Side.CLIENT)
     public Collection<String> getSource() {
-        String modid = getRegistryName().getResourceDomain();
+        String modid = getRegistryName().getNamespace();
         ModContainer mod = Loader.instance().getIndexedModList().get(modid);
         if (mod != null) {
             return Lists.newArrayList(mod.getName());
@@ -309,7 +309,7 @@ public abstract class AbstractPerk {
             this.textFormatting = formattingPrefix;
         }
 
-        public String getUnlocalizedName() {
+        public String getTranslationKey() {
             return unlocName;
         }
 

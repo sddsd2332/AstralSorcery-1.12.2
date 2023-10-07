@@ -66,7 +66,7 @@ public class GuiJournalPages extends GuiScreenJournal {
         this.previous = null;
         this.pages = new ArrayList<>(node.getPages().size());
         pages.addAll(node.getPages().stream().map(IJournalPage::buildRenderPage).collect(Collectors.toList()));
-        this.unlocTitle = node.getUnLocalizedName();
+        this.unlocTitle = node.getTranslationKey();
     }
 
     //Use this to use this screen independently of the actual journal.
@@ -77,7 +77,7 @@ public class GuiJournalPages extends GuiScreenJournal {
         this.previous = previous;
         this.pages = new ArrayList<>(detailedInformation.getPages().size());
         pages.addAll(detailedInformation.getPages().stream().map(IJournalPage::buildRenderPage).collect(Collectors.toList()));
-        this.unlocTitle = detailedInformation.getUnLocalizedName();
+        this.unlocTitle = detailedInformation.getTranslationKey();
         this.currentPageOffset = exactPage / 2;
     }
 

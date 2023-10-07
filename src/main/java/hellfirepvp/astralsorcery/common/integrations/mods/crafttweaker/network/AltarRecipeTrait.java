@@ -63,7 +63,7 @@ public class AltarRecipeTrait extends BaseAltarRecipe {
         super.write(buf);
         buf.writeBoolean(this.focusRequiredConstellation == null);
         if(this.focusRequiredConstellation != null) {
-            ByteBufUtils.writeString(buf, this.focusRequiredConstellation.getUnlocalizedName());
+            ByteBufUtils.writeString(buf, this.focusRequiredConstellation.getTranslationKey());
         }
     }
 
